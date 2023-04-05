@@ -32,7 +32,7 @@ func (DBString ConnectDBString) CloseSingletonDatabase() error {
 }
 
 func (DBString ConnectDBString) initializeDB() (*gorm.DB, error) {
-	dbURI := fmt.Sprintf("host=%s user=%s dbname=%s sslmode=disable password=%s port=%s", DBString.DBHost, DBString.DBUser, DBString.DBPassword, DBString.DBName, DBString.DBPort)
+	dbURI := fmt.Sprintf("host=%s user=%s password=%s dbname=%s port=%s sslmode=disable", DBString.DBHost, DBString.DBUser, DBString.DBPassword, DBString.DBName, DBString.DBPort)
 	db, OpenPostgresDBError := gorm.Open(postgres.New(postgres.Config{
 		DSN:                  dbURI,
 		PreferSimpleProtocol: true,
